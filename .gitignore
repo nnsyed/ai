@@ -1,0 +1,5 @@
+.vs
+langchain/.env
+langchain/.venv
+openai-api/.env
+openai-api/.venv
