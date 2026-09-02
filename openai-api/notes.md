@@ -32,5 +32,3 @@
         │               │
    Single Agent    Multi-Agent
 
-
-

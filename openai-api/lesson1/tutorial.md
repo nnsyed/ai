@@ -1,7 +1,22 @@
 
-
-
 **Lesson 1 — Build Your First OpenAI Terminal Chatbot**
+
+
+Simple api call:
+              ┌─────────────┐
+              │     User    │
+              └──────┬──────┘
+                     │
+                     ▼
+              ┌─────────────┐
+              │     LLM     │
+              └──────┬──────┘
+                     │
+                     ▼
+                  Answer
+
+
+Chatbot:
 
                  Terminal
                     │
@@ -31,7 +46,7 @@
                     ▼
                  Terminal
 
-**Step 7 — Understand the Response**
+**Understand the Response**
 response
 │
 ├── id
