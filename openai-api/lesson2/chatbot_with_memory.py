@@ -1,6 +1,7 @@
 # Lesson 2 — Chatbot With Conversation Memory
-
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
 
 
 def main():
@@ -8,7 +9,8 @@ def main():
     # ------------------------------------------------
     # 1. Create OpenAI client
     # ------------------------------------------------
-    client = OpenAI()
+    load_dotenv()
+    client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
     # ------------------------------------------------
     # 2. Create conversation history
