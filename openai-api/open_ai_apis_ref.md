@@ -35,14 +35,14 @@ Priority	    API	                What it's for
 ⭐⭐⭐⭐	        files	            Uploading data
 ⭐⭐⭐⭐	        vector_stores	    RAG / document search
 ⭐⭐⭐⭐	        embeddings	        Semantic/vector search
-⭐⭐⭐	        audio	            Voice applications
-⭐⭐⭐	        images	            Image generation
-⭐⭐⭐	        realtime	        Realtime/voice agents
+⭐⭐⭐	            audio	            Voice applications
+⭐⭐⭐	            images	            Image generation
+⭐⭐⭐	            realtime	        Realtime/voice agents
 ⭐⭐	            batches             Large-scale processing
 ⭐⭐	            fine_tuning	        Customizing models
 ⭐⭐	            evals	            Testing/evaluation
-⭐	            admin	            Platform administration
-⭐	            chat.completions    Existing/legacy-style integrations
+⭐	                admin	            Platform administration
+⭐	                chat.completions    Existing/legacy-style integrations
 --------------------------------------------------------------
 
 **1. client.responses.create** is a modern, stateful API designed for advanced multi-turn conversations, 

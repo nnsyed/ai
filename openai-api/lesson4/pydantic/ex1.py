@@ -7,4 +7,5 @@ class User(BaseModel):
 
 
 user = User(id=1, name="Alice", email="alice@example.com")
+
 print(user.model_dump())

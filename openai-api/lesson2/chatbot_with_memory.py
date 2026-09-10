@@ -28,7 +28,6 @@ def main():
     # 3. Chat loop
     # ------------------------------------------------
     while True:
-
         user_input = input("You: ")
 
         # ------------------------------------------------
@@ -75,7 +74,6 @@ def main():
         # Display token usage
         # ------------------------------------------------
         if response.usage:
-
             print("Token Usage")
             print("------------")
             print(

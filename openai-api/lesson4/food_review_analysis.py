@@ -32,7 +32,7 @@ very slow. The waiter was friendly though.
 # Ask OpenAI for structured output
 # -----------------------------------------
 response = client.responses.parse(
-    model="gpt-5",
+    model="gpt-4.1-mini",
     input=f"""
     Analyze this customer review:
     {review}

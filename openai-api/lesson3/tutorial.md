@@ -17,7 +17,7 @@ AI: Recursion is a programming technique...
 With Streaming Responses, you can receive the response in chunks as they are generated:
 
 You: Explain recursion
-        ↓
+      
        OpenAI
         ↓
 AI: Recursion

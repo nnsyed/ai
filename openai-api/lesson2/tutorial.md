@@ -4,6 +4,14 @@
 The model receives the request. It **does not mean** that your Python application automatically maintains unlimited conversation memory.
 Your application needs to manage the conversation state appropriately.
 
+==========================================================================================================================================
+
+**The context window** is the maximum number of tokens that can be used in a single request. 
+This max tokens number includes input, output, and reasoning tokens. To learn your model’s context window, see model details.
+
+==========================================================================================================================================
+
+
 User
  │
  │ "What is recursion?"

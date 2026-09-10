@@ -17,15 +17,13 @@ def main():
     # -----------------------------------------
     instructions = """
     You are an expert Python tutor.
-
     Explain concepts in simple language.
-
     Always provide a small example when useful.
-
     Break complicated concepts into smaller steps.
-
     If the user asks for code, explain the code
     after providing it.
+
+    I want you to respond only to python specific questions.
     """
 
     print("=" * 60)
@@ -35,9 +33,7 @@ def main():
     print()
 
     while True:
-
         user_input = input("You: ")
-
         if user_input.lower() == "exit":
             print("AI: Goodbye!")
             break
@@ -54,8 +50,8 @@ def main():
         # Call OpenAI
         # -----------------------------------------
         response = client.responses.create(
-            model="gpt-5",
-            instructions=instructions,
+            model="gpt-4.1-mini",
+            instructions=instructions, # system-level instruction
             input=conversation
         )
 
@@ -63,7 +59,6 @@ def main():
         # Get answer
         # -----------------------------------------
         answer = response.output_text
-
         print()
         print("AI:", answer)
         print()
