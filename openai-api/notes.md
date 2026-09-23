@@ -1,6 +1,5 @@
 
 **Course blueprint**
-
 -------------------------------------------------------------
 1  Basic API
 2  Conversation Memory
@@ -9,11 +8,12 @@
 5  Function Calling
 6  Multi-Tool Agent
 7  Real REST + Oracle
+
 8  Production Agent Architecture
 9  Streaming + Observability
 
-10 Persistent Memory + State
-11 RAG + Knowledge Agent
+10  Persistent Memory + State
+11  RAG + Knowledge Agent
 12  Multi-Agent Systems
 13  Agent Planning / Workflows
 14  MCP
@@ -25,16 +25,6 @@
 -------------------------------------------------------------
 
 
-
-* AI chatbots
-* Coding assistants
-* Research assistants
-* Document analyzers
-* SQL generators
-* RAG applications
-* AI workflows
-* Autonomous AI Agents
-* Multi-agent systems
 
 
 

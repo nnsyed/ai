@@ -4,21 +4,15 @@ from agent.agent import EmployeeAgent
 # ==========================================================
 # Logging
 # ==========================================================
-logging.basicConfig(level=logging.INFO,
-    format=(
-        "%(asctime)s "
-        "%(levelname)s "
-        "%(name)s "
-        "%(message)s"
-    )
-    handlers=[logging.FileHandler( "logs/agent.log" ),logging.StreamHandler()]
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s %(message)s",
+    handlers=[logging.FileHandler("logs/agent.log"), logging.StreamHandler()]  # Added missing comma before handlers
 )
-
 
 # ==========================================================
 # Application
 # ==========================================================
-
 def main():
     agent = EmployeeAgent()
     print()

@@ -1,0 +1,6 @@
+2026-09-23 11:32:00,558 INFO httpx HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-09-23 11:32:02,880 INFO tools.registry Tool=get_employee duration=2.065s
+2026-09-23 11:32:05,352 INFO httpx HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-09-23 11:32:05,395 INFO tools.registry Tool=calculate_compensation duration=0.000s
+2026-09-23 11:32:05,687 INFO tools.registry Tool=get_exchange_rate duration=0.292s
+2026-09-23 11:32:09,472 INFO httpx HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"

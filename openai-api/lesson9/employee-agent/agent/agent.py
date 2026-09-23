@@ -66,7 +66,6 @@ class EmployeeAgent:
                         tool_name = item.name
                         arguments = json.loads(item.arguments)
                         self.emit("TOOL_STARTED",f"Calling {tool_name}...")
-
                         try:
                             result = execute_tool(tool_name,arguments)
                             print(f"✓ {tool_name} " f"completed")
