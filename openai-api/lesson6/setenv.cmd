@@ -1,0 +1,3 @@
+set ORACLE_USER=scott
+set ORACLE_PASSWORD=tiger
+set ORACLE_DSN=localhost:1521/FREEPDB1

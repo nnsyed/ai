@@ -1,8 +1,8 @@
 import os
 import json
 import oracledb
-from dotenv import load_dotenv
 from openai import OpenAI
+from dotenv import load_dotenv
 
 # ============================================================
 # OPENAI
@@ -19,7 +19,6 @@ def get_connection():
         password=os.environ["ORACLE_PASSWORD"],
         dsn=os.environ["ORACLE_DSN"]
     )
-
 
 # ============================================================
 # TOOL 1
@@ -39,13 +38,11 @@ def get_department(department_name):
         )
         row = cursor.fetchone()
         if row is None:
-            return 
-            {
+            return {
                 "found": False,
                 "message": "Department not found"
             }
-        return 
-        {
+        return {
             "found": True,
             "department_number": row[0],
             "department_name": row[1],
@@ -53,7 +50,6 @@ def get_department(department_name):
         }
     finally:
         connection.close()
-
 # ============================================================
 # TOOL 2
 # ============================================================
@@ -89,7 +85,6 @@ def get_employees_by_department(department_number):
                     float(row[4])
                     if row[4] else None
             })
-
         return employees
     finally:
         connection.close()
@@ -98,15 +93,10 @@ def get_employees_by_department(department_number):
 # TOOL 3
 # ============================================================
 def get_salary_statistics(department_number=None):
-
     connection = get_connection()
-
     try:
-
         cursor = connection.cursor()
-
         if department_number is None:
-
             sql = """
                 SELECT
                     COUNT(*),
@@ -126,11 +116,11 @@ def get_salary_statistics(department_number=None):
                 FROM EMP
                 WHERE DEPTNO = :deptno
             """
-
-            cursor.execute(sql,deptno=department_number)
-
+            cursor.execute(
+                sql,
+                deptno=department_number
+            )
         row = cursor.fetchone()
-
         return {
             "employee_count": row[0],
             "minimum_salary":
@@ -143,11 +133,8 @@ def get_salary_statistics(department_number=None):
                 float(row[3])
                 if row[3] else None
         }
-
     finally:
-
         connection.close()
-
 
 # ============================================================
 # TOOL DEFINITIONS
@@ -196,7 +183,6 @@ tools = [
     {
         "type": "function",
         "name": "get_salary_statistics",
-
         "description": """
         Calculate salary statistics.
         If department_number is null,
@@ -225,11 +211,17 @@ tools = [
 # ============================================================
 def execute_tool(name, arguments):
     if name == "get_department":
-        return get_department(arguments["department_name"])
+        return get_department(
+            arguments["department_name"]
+        )
     elif name == "get_employees_by_department":
-        return get_employees_by_department(arguments["department_number"])
+        return get_employees_by_department(
+            arguments["department_number"]
+        )
     elif name == "get_salary_statistics":
-        return get_salary_statistics(arguments["department_number"])
+        return get_salary_statistics(
+            arguments["department_number"]
+        )
     else:
         raise ValueError(
             f"Unknown tool: {name}"
@@ -240,7 +232,7 @@ def execute_tool(name, arguments):
 # ============================================================
 def run_agent(user_question):
     response = client.responses.create(
-        model="gpt-5",
+        model="gpt-4.1-mini",
         instructions="""
         You are an Oracle employee database assistant.
         You have access to the SCOTT schema.
@@ -260,30 +252,31 @@ def run_agent(user_question):
     # ========================================================
     while True:
         tool_outputs = []
-
         for item in response.output:
             if item.type != "function_call":
                 continue
             print(f"\n[Agent selected tool: {item.name}]")
             print(f"[Arguments: {item.arguments}]")
             arguments = json.loads(item.arguments)
-            result = execute_tool(item.name, arguments)
+            result = execute_tool(item.name,arguments)
             print(f"[Tool result: {result}]")
             tool_outputs.append({
-                "type": "function_call_output",
-                "call_id": item.call_id,
-                "output": json.dumps(result)
+                "type":"function_call_output",
+                "call_id":item.call_id,
+                "output":json.dumps(result)
             })
+
         # ----------------------------------------------------
         # No tools requested
         # ----------------------------------------------------
         if not tool_outputs:
             return response.output_text
+
         # ----------------------------------------------------
         # Send tool results back to GPT
         # ----------------------------------------------------
         response = client.responses.create(
-            model="gpt-4.1-mini",
+            model="gpt-5",
             previous_response_id=response.id,
             input=tool_outputs,
             tools=tools
